@@ -20,4 +20,15 @@ This lab covers how to manage Identity and Access Management (IAM) administrator
 
 
 ## Managing IAM Administrator Roles
-sdhcbcshdksjcdlsc
+
+### 1. IAM Administrator Roles
+
+
+## Create User
+
+
+1. Log in to OPERA Cloud Identity Management as an administrator.
+
+
+2. Click the Groups tile on the home page.
+The Group Management page consists of a search bar and a table listing all the groups pertaining to a location.

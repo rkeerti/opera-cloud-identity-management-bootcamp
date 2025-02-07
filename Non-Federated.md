@@ -6,12 +6,9 @@ This lab covers how to manage Identity and Access Management (IAM) administrator
 * [Managing IAM Administrator Roles](#managing-iam-administrator-roles)
 * [Managing Groups](#managing-groups)
 
-
-
 ## Managing Users
 
 ### Create User
-
 
 1. Log in to OPERA Cloud Identity Management portal as an administrator. The URL will follow the following pattern:
 
@@ -140,3 +137,30 @@ created in the previous steps and press Enter
 
 ### Copy Groups
 
+
+## Managing Oracle Users
+
+### Managing Oracle Support User Access
+
+1. Login to OPERA Cloud Identity Management portal and click on the **Oracle Support Access** tile on the homepage.
+
+2. After selecting the Oracle Support Access tile, the Oracle Support User Access page will open.
+
+3. You will be able to see the Oracle user email address,location of support role grant, the role that is granted when the grant was established and the end date and time of the grant
+
+#### Granting Access to Oracle Support Users
+
+1. Select the **Grant Access** button to grant Oracle Support User Access to a user.
+A ‘Grant Access’ drawer opens that enables you to enter the required details for the new Oracle Support User Access grant.
+
+2. Select between the Chain/Property role type (DATAACCESS, SENSITIVEDATAACCESS roles) and Enterprise role type (ENTDATAACCESS, ENTSENSITIVEDATAACCESS roles).
+
+3. Enter the following details:
+    * Email Address (must end with @oracle.com)
+    * Location
+    * Role 
+        * Chain/Property: DATAACCESS, SENSITIVEDATAACCESS
+        * Enterprise: ENTDATAACCESS, ENTSENSITIVEDATAACCESS
+    * Access End Date (By default, the end date will be 7 days. You can update the Access End Date to any date between 1 and 180 days)
+
+4. Click the Grant Access button when you are ready to grant access to the user. The user is granted support access to the locations for the selected roles until the Access End Date.

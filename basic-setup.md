@@ -24,7 +24,7 @@ The Opera Cloud Identity Management portal home page appears.
 1. Sign up for Okta account free trial account using the following link : 
 
 ```
-    <copy> https://www.okta.com/free-trial/ </copy>
+    https://www.okta.com/free-trial/
 ``` 
 
 ![Okta Sign Up](images/okta-signup.png)

@@ -6,7 +6,7 @@
 |-----------|---------------------------------      |
 |08:30-09:00|Coffee                                 |
 |09:00-09:30|OCI IAM Fundamentals                   |
-|09:00-11:00|OPERA Cloud Identity Management (OCIM) Introduction​                                        |
+|09:3s0-11:00|OPERA Cloud Identity Management (OCIM) Introduction​                                        |
 |11:00-11:10|Coffee                                 |
 |11:10-11:30|OCIM Portal – End User Journey  (Lab)​  |
 |11:30-13:00|OCIM Portal – Manage Users (Lab)​​  |

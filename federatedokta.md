@@ -342,7 +342,7 @@ Note: You can also create a new application for SSO optionally.
 
 1. Enter the OPERA Cloud Console URL which follows the following format:
     ```
-    https://
+    https://<hostname>/<enterprise Id>/operacloud
     ```
 2. You should see an option to sign in via Okta IdP. Click on the Okta IdP to sign-on
 

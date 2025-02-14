@@ -1,8 +1,4 @@
-# Prerequisites for Federation Lab
-
-* [Create an Okta Account](#create-okta-account)
-**OR**
-* [Create an Azure Account](#create-azure-account)
+# Okta Account for Identity Federation
 
 
 ## Create Okta Account
@@ -31,6 +27,4 @@
 
     <img src= "images/okta1.png" alt="Okta1" style="border: 1px solid black;">
 
-
-## Create Azure Account
 

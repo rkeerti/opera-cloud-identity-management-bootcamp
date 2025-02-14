@@ -44,9 +44,9 @@
 
 12. On the application details page, click Activate and confirm that you want to activate the new application.
 
-## Task 2 : Find the Domain URL and Generate a Secret Token
+### Find the Domain URL and Generate a Secret Token
 
-1. Return to the identity domain overview by clicking the identity domain name in the breadcrumbs. Click Copy next to the Domain URL in Domain information and save the URL to an app where you can edit it. The OCI IAM GUID is the **IdentityDomainID** part of the domain URL:
+13. Return to the identity domain overview by clicking the identity domain name in the breadcrumbs. Click Copy next to the Domain URL in Domain information and save the URL to an app where you can edit it. The OCI IAM GUID is the **IdentityDomainID** part of the domain URL:
 
     ```
     https://<IdentityDomainID>.identity.oraclecloud.com:443/fed/v1/idp/sso
@@ -54,19 +54,19 @@
 
     ![Domain1](images/domain1.png)
 
-2. In the confidential app in OCI IAM, click the OAuth configuration under Resources.
+14. In the confidential app in OCI IAM, click the OAuth configuration under Resources.
 
-3. Scroll down and find the Client ID and Client secret under General Information.
+15. Scroll down and find the Client ID and Client secret under General Information.
 
-4. Copy the client ID and store it.
+16. Copy the client ID and store it.
 
     <img src= "images/domain2.png" alt="Domain2" style="border: 1px solid black;">
 
-5. Click Show secret and copy the secret and store it.
+17. Click Show secret and copy the secret and store it.
 
     ![Domain3](images/domain3.png)
     
-6. The secret token is the base64 encoding of clientID:clientsecret or
+18. The secret token is the base64 encoding of clientID:clientsecret or
 
     ```
     base64(<clientID>:<clientsecret>)
@@ -93,7 +93,7 @@ In an Apple MacOS, use the following:
     
 * Make a note of the secret token value.
 
-## Task 3 : Configure the OCI IAM Application in the Identity Provider (Okta)​
+## Task 2 : Configure the OCI IAM Application in the Identity Provider (Okta)​
 
 1. Sign in to your Okta account.
 
@@ -118,7 +118,7 @@ In an Apple MacOS, use the following:
 5. Under General settings, enter a name for the application, for example **OCI-App**, and click **Done**.
 
 
-## Task 4 : Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)
+## Task 3 : Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)
 
 1. In the newly created application page, click the **Sign On** tab.
 In Settings, click **Edit**.
@@ -213,7 +213,7 @@ Note: Use single quotes ('') for string values, for example primary work locatio
     <img src= "images/okta18.png" alt="Okta" style="border: 1px solid black;">
 
 
-## Task 5 : Test User and Group Provisioning into OCI IAM 
+## Task 4 : Test User and Group Provisioning into OCI IAM 
 
 1. In the newly created application, click the Assignments tab.
 2. Click Assign and select Assign to People.
@@ -250,7 +250,7 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
 # Configuring Single Sign-on
 
-## Task 6 : Download the SAML Metadata from OCI IAM Identity Domain
+## Download the SAML Metadata from OCI IAM Identity Domain
 
 1. Open a supported browser and enter the following Oracle Cloud Infrastructure (OCI) Console URL: https://cloud.oracle.com and sign in to the OCI console
 
@@ -270,7 +270,7 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
 7. Return to the identity domain overview by clicking the identity domain name in the breadcrumb navigation trail. Click Copy next to the Domain URL in Domain information and save the URL. This is the OCI IAM domain URL that you will use later.
 
-## Task 7 : Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
+## Task 5 : Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
 
 1. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning.
 Note: You can also create a new application for SSO optionally.
@@ -289,7 +289,7 @@ Note: You can also create a new application for SSO optionally.
     <img src= "images/sso6.png" alt="SSO" style="border: 1px solid black;">
 
 
-## Task 8 :  Configure Okta as an Identity Provider in OCI IAM Identity Domain
+## Task 6 :  Configure Okta as an Identity Provider in OCI IAM Identity Domain
 
 1. In the OCI Console in the domain you are working in, click Security and then click Identity providers.
 
@@ -299,7 +299,7 @@ Note: You can also create a new application for SSO optionally.
 
 4. On the Exchange metadata page, ensure that **Enter IdP metadata** is selected.
 
-5. Enter the following details that was noted in Task 7, Step 3 
+5. Enter the following details that was noted in the previous steps
     * For Identity provider issuer URI: Enter the Issuer URL.
     * For SSO service URL: Enter the SingleSignOnService URL.
     * For SSO service binding: Select POST.
@@ -316,7 +316,7 @@ Note: You can also create a new application for SSO optionally.
 9. Click Service Provider metadata.
 10. Click Download next to Service Provider signing certificate to download the SP signing certificate and save it.
 
-## Task 9 : Configure Identity Provider (IdP) Policy​
+## Task 7 : Configure Identity Provider (IdP) Policy​
 
 1. In the OCI Console in the domain you are working in, click Security and then click IdP policies.
 
@@ -328,6 +328,8 @@ Note: You can also create a new application for SSO optionally.
 
     <img src= "images/sso13.png" alt="SSO" style="border: 1px solid black;">
 
+## Task 8 : Configure Single Sign-on Policy​
+
 4. Add IdP to Sign-on policy in IAM Domain:
     * Navigate to Sign-on policies under Security.
     * Click on Default Sign-On Policy.
@@ -338,7 +340,7 @@ Note: You can also create a new application for SSO optionally.
     <img src= "images/sso11.png" alt="SSO" style="border: 1px solid black;">
 
 
-## Task 10 - Test Single Sign-on
+## Task 9 - Test Single Sign-on
 
 1. Enter the OPERA Cloud Console URL which follows the following format:
     ```

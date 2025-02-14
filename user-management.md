@@ -1,8 +1,5 @@
 # 1. OCIM Portal End User Journey
 
-## Login to OPERA Cloud Identity Management Portal
-
-* [Login as Non-Federated User](#login-as-non-federated-user)
 
 ## Login as Non-Federated User
 

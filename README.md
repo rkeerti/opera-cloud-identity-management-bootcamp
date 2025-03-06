@@ -7,7 +7,6 @@ Materials for bootcamp on the OPERA Cloud Identity Management:
 3. [OCIM Portal User Management](user-management.md)
 4. [Okta Setup](basic-setup.md)
 5. [Federation with Okta](federatedokta.md)
-6. [Azure Setup](basic-setup-azure.md)
 6. [Federation with Azure](federatedazure.md)
 7. [MFA](mfa.md)
 8. [OCIM Portal Administrator JourneyGroup Management](user-management.md)

@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "cbe4195e-ba9b-4984-ad54-262400fb6e99",
+		"name": "OCIM Federation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7260972"
+	},
+	"item": [
+		{
+			"name": "Obtain access_token (client credentials)",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{CLIENT_ID}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "urn:opc:idm:__myscopes__",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/oauth2/v1/token",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"oauth2",
+						"v1",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the Identity Provider Name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/admin/v1/IdentityProviders?attributes=partnerName",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"admin",
+						"v1",
+						"IdentityProviders"
+					],
+					"query": [
+						{
+							"key": "attributes",
+							"value": "partnerName"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get the Identity Provider Id by passing Identity Provider Name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{HOST}}/admin/v1/IdentityProviders?attributes=jitUserProvAttributes.value&filter=partnerName+eq+\"<partnerName>\"",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"admin",
+						"v1",
+						"IdentityProviders"
+					],
+					"query": [
+						{
+							"key": "attributes",
+							"value": "jitUserProvAttributes.value"
+						},
+						{
+							"key": "filter",
+							"value": "partnerName+eq+\"<partnerName>\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the JIT Attribute Mapping",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"schemas\": [\r\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\r\n    ],\r\n    \"Operations\": [\r\n        {\r\n            \"op\": \"replace\",\r\n            \"path\": \"attributeMappings\",\r\n            \"value\": [\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_userid)\",\r\n                    \"idcsAttributeName\": \"userName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_givenname)\",\r\n                    \"idcsAttributeName\": \"name.givenName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_surname)\",\r\n                    \"idcsAttributeName\": \"name.familyName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_emailaddress)\",\r\n                    \"idcsAttributeName\": \"emails[primary eq true and type eq \\\"work\\\"].value\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_preferredlanguage)\",\r\n                    \"idcsAttributeName\": \"preferredLanguage\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_primaryworklocation)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_PrimaryWorkLocation\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"#upper($(assertion.oc_ownercode))\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_UserOwnerCode\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_employeenumber)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_UserEmployeeNo\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_telephonenumber)\",\r\n                    \"idcsAttributeName\": \"phoneNumbers[type eq \\\"mobile\\\"].value\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_title)\",\r\n                    \"idcsAttributeName\": \"title\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_displayname)\",\r\n                    \"idcsAttributeName\": \"displayName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_usertype)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_UserType\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_orgcode)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_Department\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_workphonenumber)\",\r\n                    \"idcsAttributeName\": \"phoneNumbers[type eq \\\"work\\\"].value\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_userinitial)\",\r\n                    \"idcsAttributeName\": \"name.honorificPrefix\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_middlename)\",\r\n                    \"idcsAttributeName\": \"name.middleName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_honorificsuffix)\",\r\n                    \"idcsAttributeName\": \"name.honorificSuffix\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_timezone)\",\r\n                    \"idcsAttributeName\": \"timezone\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_locale)\",\r\n                    \"idcsAttributeName\": \"locale\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_actsas)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_ActAs\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_actsat)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_ActAt\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_hubs)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_Hubs\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/admin/v1/MappedAttributes/<jitUserProvAttributes.value>",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"admin",
+						"v1",
+						"MappedAttributes",
+						"<jitUserProvAttributes.value>"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update the JIT Attribute Mapping for Azure IdP",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"schemas\": [\r\n        \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\r\n    ],\r\n    \"Operations\": [\r\n        {\r\n            \"op\": \"replace\",\r\n            \"path\": \"attributeMappings\",\r\n            \"value\": [\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_userid)\",\r\n                    \"idcsAttributeName\": \"userName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_givenname)\",\r\n                    \"idcsAttributeName\": \"name.givenName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_surname)\",\r\n                    \"idcsAttributeName\": \"name.familyName\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_emailaddress)\",\r\n                    \"idcsAttributeName\": \"emails[primary eq true and type eq \\\"work\\\"].value\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_primaryworklocation)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_PrimaryWorkLocation\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"#upper($(assertion.oc_ownercode))\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_UserOwnerCode\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_employeenumber)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_UserEmployeeNo\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_actsas)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_ActAs\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_actsat)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_ActAt\"\r\n                },\r\n                {\r\n                    \"managedObjectAttributeName\": \"$(assertion.oc_hubs)\",\r\n                    \"idcsAttributeName\": \"urn:ietf:params:scim:schemas:idcs:extension:custom:User:OC_Hubs\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "{{HOST}}/admin/v1/MappedAttributes/<jitUserProvAttributes.value>",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"admin",
+						"v1",
+						"MappedAttributes",
+						"<jitUserProvAttributes.value>"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

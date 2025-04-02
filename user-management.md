@@ -66,7 +66,7 @@ An email notification is sent to the email associated with that user account as 
 
 ## Task 2 - Search for a user
 
-5. Click Locations and select the location to search for the associated users in that location.
+1. Click Locations and select the location to search for the associated users in that location.
 Optionally, you can also search user(s) based on username, name or even user email address.
 
 6. Select users from the search result and perform actions on those user(s) by clicking More Actions.
@@ -77,7 +77,7 @@ Alternatively, click the Action column for a user row to perform actions on that
 
 ## Task 3 - Update a User Profile
 
-7. From the User Management page, Click **Locations** and select the location to search for the associated users in that location
+1. From the User Management page, Click **Locations** and select the location to search for the associated users in that location
 
 8. Click on the Username of the user that you created to open the User Profile page.
 
@@ -94,7 +94,7 @@ Alternatively, click the Action column for a user row to perform actions on that
 
 ## Task 4 - Assign ALLTASKS  or any non-admin group membership 
 
-11. To assign an additional group to the user, select Assign Groups.
+1. To assign an additional group to the user, select Assign Groups.
 
 12. Search for **ALLTASKS** or **FRONTDESK** group, select the group and click the Update button in the Assign Groups drawer.
 
@@ -104,7 +104,7 @@ Alternatively, click the Action column for a user row to perform actions on that
 
 During an employee or contractor transfer from one property or chain to another, OPERA Cloud Identity Management supports changing a user’s primary working location to a new location, so the new location’s administrator can manage the user.
 
-13. On the User Profile page for a user, click More Actions and then click Edit User Primary Work Location.
+1. On the User Profile page for a user, click More Actions and then click Edit User Primary Work Location.
 
     ![My Profile](images/nonfed9.png)
 
@@ -120,7 +120,7 @@ During an employee or contractor transfer from one property or chain to another,
 
 ## Task 6 - Assign user to IAMADMIN​ Administrator role
 
-17. From the homepage, Click **Administrator Roles**
+1. From the homepage, Click **Administrator Roles**
 
 18. Click the Locations filter chip in the search bar and select the location.
 
@@ -138,13 +138,13 @@ During an employee or contractor transfer from one property or chain to another,
 
 ## Task 7 - Deactivate User
 
-23. On the User profile page for a user, click More Actions and then click Deactivate User
+1. On the User profile page for a user, click More Actions and then click Deactivate User
 
 24. The user is deactivated and can be activated again.
 
 ## Task 8 - Delete User
 
-25. On the User profile page for a user, click More Actions and then click Delete User
+1. On the User profile page for a user, click More Actions and then click Delete User
 
 26. Click Delete to delete the user account.
 
@@ -153,7 +153,7 @@ During an employee or contractor transfer from one property or chain to another,
 
 ## Task 9 - Approve Oracle User’s data access request​
 
-27. Log in to OPERA Cloud Identity Management portal.
+1. Log in to OPERA Cloud Identity Management portal.
 In the OPERA Cloud Identity Management portal, you will see a tile for Oracle Access Requests.
 
 28. Select the Oracle Access Requests tile.

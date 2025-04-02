@@ -123,14 +123,16 @@ Search for Oracle Cloud Infrastructure Console and select it.
     
     <img src= "images/azure6.png" alt="Domain2" style="border: 1px solid black;">
 
-7. Click Get started and change the Provisioning Mode to **Automatic**.
+7. Click Get started:
 
-8. Under Admin Credentials, Enter the **Tenant URL**. The tenant URL is the OCI IAM Domain URL noted in the previous steps followed by **/admin/v1** 
-That is, the tenant URL will be in the following format : 
-    ```
-    https://<domainURL>/admin/v1
-    ```
-9. Enter the base 64 encoded secret token generated in the previous steps.
+    * Change the Provisioning Mode to **Automatic**.
+    
+    * Under Admin Credentials, Enter the **Tenant URL**. The tenant URL is the OCI IAM Domain URL noted in the previous steps followed by **/admin/v1** 
+    That is, the tenant URL will be in the following format : 
+        ```
+        https://<domainURL>/admin/v1
+        ```
+    * Enter the base 64 encoded secret token generated in the previous steps.
 
     <img src= "images/azure7.png" alt="Domain2" style="border: 1px solid black;">
 
@@ -212,7 +214,7 @@ Under Mappings, click **Provision Microsoft Entra ID Groups**
     * Value/Expression : Refer to the **Value** column from the User Mapping Table
     * Target Attribute: Refer to the value from the **OCI IAM Domain User Attribute Name** column from the User Mapping Table
     
-    The User Mapping table to map user attributes between OCI IAM and Okta is shown below. Ensure all of the mandatory attributes. Some attributes may have already been created by default, you do not have to add them.
+    The User Mapping table to map user attributes between OCI IAM and Entra ID is shown below. Ensure all of the mandatory attributes are added. Some attributes may have already been created by default, you do not have to add them.
 
     | Entra ID User Attribute Name     | OCI IAM Domain User Attribute Name | IAM Domain Attribute Type | Mapping Type | Attribute Value | Description | Mandatory Attribute |
     | ----------- | ----------- |-------|------|------|------|--------|
@@ -274,7 +276,7 @@ The Users and groups page now shows the users and groups you have chosen.
 
     <img src= "images/azure13.png" alt="Domain2" style="border: 1px solid black;">
 
-9. Click Provisioning in the left menu to provision the groups and users. The provisioning log shows the status.
+9. Click Provisioning in the left menu to see the provisioning details for the groups and users. The provisioning log shows the status.
 
     <img src= "images/azure14.png" alt="Domain2" style="border: 1px solid black;">
 
@@ -297,11 +299,13 @@ The Users and groups page now shows the users and groups you have chosen.
 4. Click the name of the identity domain in which you want to work.
 5. Click Security on the left navigation and then click **Identity providers.**
 6. Click **Export SAML metadata.**
+    <img src= "images/azuref1.png" alt="Domain2" style="border: 1px solid black;">
 7. Select **Download XML** under Metadata with self-signed certificates.
+    <img src= "images/azuref2.png" alt="Domain2" style="border: 1px solid black;">
 
 ### Configure SSO for the Enterprise application in Entra ID
 
-1. Under the Manage section, select **Single sign-on**
+8. Under the Manage section, select **Single sign-on**
 
     <img src= "images/azure17.png" alt="Domain2" style="border: 1px solid black;">
 
@@ -332,11 +336,11 @@ After you upload the file, the following Basic SAML Configuration fields are aut
 
 6. Click **Save**
 
-### Configure User Attributes and Claims
+### Configure User Attributes and Claims in Azure
 
-The Oracle Cloud Infrastructure Console enterprise application template is seeded with the required attributes, so there is no need to add any. However, you must make the following customizations:
+The Oracle Cloud Infrastructure Console enterprise application template in Entra ID is seeded with the required attributes, so there is no need to add any. However, you must make the following customizations:
 
-1. In the User Attributes & Claims section, click Edit in the upper-right corner. The Manage Claim panel appears.
+14. In the User Attributes & Claims section, click Edit in the upper-right corner. The Manage Claim panel appears.
 2. Next to the Name identifier value field, click Edit.
 3. Under Required claim, select **Unique User Identifier (Name ID).**
 4. Select **Email address** and change it to “Persistent.”
@@ -350,13 +354,13 @@ The Oracle Cloud Infrastructure Console enterprise application template is seede
 
 ### Download the Entra ID SAML Metadata Document
 
-1. In the SAML Signing Certificate section, click the download link next to Federation Metadata XML.
+21. In the SAML Signing Certificate section, click the download link next to Federation Metadata XML.
 
 2. Download this document and make a note of where you save it. You will upload this document to the IAM Domain Console in the next series of steps.
 
 ### Assign User Groups to the Application
 
-1. On the left navigation pane, under Manage, select Users and Groups.
+23. On the left navigation pane, under Manage, select Users and Groups.
 2. Click Add at the top of the Users and Groups list to open the Add Assignment pane.
 3. Click the Users and groups selector.
 4. Enter the name of the group you want to assign to the application into the Search by name or email address search box.
@@ -386,14 +390,14 @@ The Oracle Cloud Infrastructure Console enterprise application template is seede
 
 ## Task 7 : Configure Identity Provider (IdP) Policy​
 
-11. Click **Add to IdP Policy Rule.**
+1. Click **Add to IdP Policy Rule.**
 12. Click **Default Identity Provider Policy** to open it, and from the context (three dots) menu choose **Edit IdP rule**
 13. Click **Assign identity providers** and then click **Entra ID Identity provider** to add it to the list.
 14. Click Save Changes.
 
 ## Task 8 : Configure Single Sign-on Policy​
 
-15. Go back to Security and click **Sign-on policies.**
+1. Go back to Security and click **Sign-on policies.**
 16. Click **Default Identity Provider** Policy to open it, and in the Sign-on rules from the context (three dots) menu on the right, select **Edit IdP rule.**
 17. Select Entra ID
     <img src= "images/azure22.png" alt="Domain2" style="border: 1px solid black;">
@@ -423,7 +427,7 @@ To configure the part of JIT attribute Mapping through Postman, follow these ste
 
 #### Set the Environment Parameters in Postman
 
-1. Open Postman application, select **Environments**, and click **Import**.
+7. Open Postman application, select **Environments**, and click **Import**.
 
 2. On the Import screen, Import the file OCI IAM Identity Domain.postman_environment.json
 
@@ -436,7 +440,7 @@ To configure the part of JIT attribute Mapping through Postman, follow these ste
 
 #### Import the OCIM Federation Postman Collection
 
-1. On the Postman main page, select **Collection** and click Import.
+10. On the Postman main page, select **Collection** and click Import.
 
 2. In the Import dialog box, import the file OCIM Federation.postman_collection.json. 
 
@@ -444,7 +448,7 @@ To configure the part of JIT attribute Mapping through Postman, follow these ste
 
 #### Request an Access Token
 
-1. On the Collections tab, expand **OCIM Federation** and select **Obtain access_token (client credentials)**. Click Send.
+12. On the Collections tab, expand **OCIM Federation** and select **Obtain access_token (client credentials)**. Click Send.
 
 2. The access token is returned in the response from Oracle Identity Domain.
 
@@ -454,13 +458,13 @@ To configure the part of JIT attribute Mapping through Postman, follow these ste
 
 #### Get the Identity Provider Name
 
-1. Select Get the Identity Provider Name and click Send.
+16. Select Get the Identity Provider Name and click Send.
 
 2. Note the partnerName in the response for the type: SAML. The partnerName should be the Identity Provider configured in Identity Domain.
 
 #### Get the Identity Provider Id by passing the Identity Provider Name
 
-1. Select Get the Identity Provider Id by passing the Identity Provider Name.
+18. Select Get the Identity Provider Id by passing the Identity Provider Name.
 
 2. Replace partnerName in the URI with the partnerName from the 'Get the Identity Provider Name' section (see previous steps).
 
@@ -470,7 +474,7 @@ To configure the part of JIT attribute Mapping through Postman, follow these ste
 
 #### Update the JIT Attribute Mapping
 
-1. Select Update the JIT Attribute Mapping.
+22. Select Update the JIT Attribute Mapping.
 
 2. Replace the **<jitUserProvAttributes.value>** in the URL with the value from the ‘Get the Identity Provider Id by passing the Identity Provider Name’ section (see previous steps).
 
@@ -480,7 +484,7 @@ To configure the part of JIT attribute Mapping through Postman, follow these ste
 
 #### Confirm the JIT Mappings are Created
 
-1. Go to the OCI Identity Domain console, navigate to Identity Provider, and select the provider.
+25. Go to the OCI Identity Domain console, navigate to Identity Provider, and select the provider.
 
 2. Click Configure JIT and confirm the JIT mappings have been created.
 

@@ -26,26 +26,16 @@
 
 ## Task 2 - Configure MFA and Sign-on Policy
 
-9. On the Domain Details page, click Security.
+1. On the Domain Details page, click Security.
 
 
 10. On the Security page, click MFA.
 
 
-11. Under Factors, select each of the factors required to access the identity domain. For an explanation of each factor, see [Configuring Authentication Factors](https://docs.oracle.com/en-us/iaas/Content/Identity/mfa/configure-authentication-factors.htm#configure-authentication-factors)
+11. Under Factors, you can select each of the factors required to access the identity domain. 
+Here, select **Mobile App Passcode** and **Mobile App notification**.
 
     <img src= "images/mfa2.png" alt="MFA" style="border: 1px solid black;">
-
-12. (Optional step) Click Configure for the MFA factors you have selected. 
-
-
-13. (Optional step) Set the Maximum number of enrolled factors users can configure.
-
-
-14. (Optional step) Use the Trusted devices section to configure trusted device settings. Similar to "remember my computer," trusted devices do not require the user to provide secondary authentication each time they sign in.
-
-
-15. (Optional step) Under Sign-in rules, set the maximum number of unsuccessful MFA attempts a user can make before being locked out.
 
 
 16. Click Save changes, and then confirm the change.
@@ -66,11 +56,10 @@
 
         <img src= "images/mfa3.png" alt="MFA" style="border: 1px solid black;">
 
-    * Under Actions, select Allow access. Select the prompt for an additional factor and select Specified factors only.
+    * Under Actions, select Allow access. Select the prompt for an additional factor and select Specified factors only. Then Select the factors, we recommend Mobile app passcode and Mobile app notification
 
-    * Select factors, we recommend Mobile app passcode, Mobile app notification, and Fast ID Online (FIDO) passkey authenticator.
+        <img src= "images/mfa6.png" alt="MFA" style="border: 1px solid black;">
 
-        <img src= "images/mfa4.png" alt="MFA" style="border: 1px solid black;">
 
     * Select Once per session or trusted device under Frequency.
 
@@ -90,4 +79,4 @@
 
 ## Task 3 - Test MFA
 
-18. Test MFA with the user who is part of the newly created group (the group added in the sign-on rule).
+1. Test MFA with the user who is part of the newly created group (the group added in the sign-on rule).

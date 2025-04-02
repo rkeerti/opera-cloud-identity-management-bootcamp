@@ -248,9 +248,9 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
     <img src= "images/okta22.png" alt="Okta" style="border: 1px solid black;">
 
-# Configuring Single Sign-on
+## Task 5 :  Configuring Single Sign-on
 
-## Download the SAML Metadata from OCI IAM Identity Domain
+### Download the SAML Metadata from OCI IAM Identity Domain
 
 1. Open a supported browser and enter the following Oracle Cloud Infrastructure (OCI) Console URL: https://cloud.oracle.com and sign in to the OCI console
 
@@ -270,9 +270,9 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
 7. Return to the identity domain overview by clicking the identity domain name in the breadcrumb navigation trail. Click Copy next to the Domain URL in Domain information and save the URL. This is the OCI IAM domain URL that you will use later.
 
-## Task 5 : Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
+### Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
 
-1. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning.
+8. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning.
 Note: You can also create a new application for SSO optionally.
 
 2. In the application details page of the application, click the **Sign On** tab
@@ -330,15 +330,19 @@ Note: You can also create a new application for SSO optionally.
 
 ## Task 8 : Configure Single Sign-on Policy​
 
-4. Add IdP to Sign-on policy in IAM Domain:
+1. Add IdP to Sign-on policy in IAM Domain:
     * Navigate to Sign-on policies under Security.
     * Click on Default Sign-On Policy.
-    * Edit Default Sign-on Rule.
     * Under Sign-on rules, edit the Default Sign-On Rule.
-    * Under Conditions, Authenticating identity provider, add the Okta Identity Provider. 
+        <img src= "images/sso15.png" alt="SSO" style="border: 1px solid black;">
 
-    <img src= "images/sso11.png" alt="SSO" style="border: 1px solid black;">
+    * Under **Authenticating identity provider**, add the **Okta Identity Provider**. 
+    **Note**: Do not remove any already existing Authenticating identity providers.
 
+        <img src= "images/sso14.png" alt="SSO" style="border: 1px solid black;">
+
+
+    
 
 ## Task 9 - Test Single Sign-on
 
@@ -346,7 +350,7 @@ Note: You can also create a new application for SSO optionally.
     ```
     https://<hostname>/<enterprise Id>/operacloud
     ```
-2. You should see an option to sign in via Okta IdP. Click on the Okta IdP to sign-on
+2. You should see an option to sign in via **Okta IdP**. Click on the Okta IdP to sign-on
 
 3. Sign in with the Okta credentials for the test user created during our setup
 

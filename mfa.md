@@ -2,9 +2,18 @@
 
 ## Task 1 - Create an OCI IAM group
 
-1. Log in to OCI Cloud console as an OCI cloud administrator user.
+1. Open a browser window and enter the following Oracle Cloud Console URL: 
 
-2. Open the navigation menu and click Identity & Security. Under Identity, click Domains.
+    ```
+    https://cloud.oracle.com
+    ```
+2. Enter your Cloud Account Name, also referred to as your tenancy name, and click Next.
+
+3. Enter the login information and sign in to the OCI console. 
+
+4. Open the navigation menu and click **Identity & Security**. Under Identity, click **Domains**.
+
+     <img src= "images/oci1.png" alt="OCI1" style="border: 1px solid black;">
 
 3. Click the name of the identity domain in which you want to work. (You might need to change the compartment to find the domain that you want)
 

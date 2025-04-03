@@ -3,7 +3,7 @@
 
 ## Login as Non-Federated User
 
-1. To login as an end user to Opera Cloud Identity Management portal as a non-Federated user, Navigate to the Opera Cloud Identity Management portal URL which follows the following pattern
+1. To login as an end user to Opera Cloud Identity Management portal as a non-Federated user, Navigate to the Opera Cloud Identity Management portal URL which follows the following pattern:
 
     ```
     https://<OCIMHost>/<CUSTOMER ENTERPRISE ID>/ocimportal

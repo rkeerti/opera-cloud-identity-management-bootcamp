@@ -12,6 +12,9 @@
     ```
     https://cloud.oracle.com
     ```
+>> Note: Oracle Cloud Infrastructure supports the latest  versions of Google Chrome, Microsoft Edge, Safari and Firefox.
+
+
 2. Enter your Cloud Account Name, also referred to as your tenancy name, and click Next.
 
 3. Enter the login information and sign in to the OCI console. 

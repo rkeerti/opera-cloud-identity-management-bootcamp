@@ -1,4 +1,15 @@
-# OCIM Portal Administrator Journey – Reporting​
+# OCIM Portal Administrator Journey – Reporting​ <!-- omit from toc -->
+- [Objectives](#objectives)
+- [Task 1 - Run User Summary report ​](#task-1---run-user-summary-report-)
+- [Task 2 - Run Group Summary report ​](#task-2---run-group-summary-report-)
+- [Task 3 - Run Group Membership Report​](#task-3---run-group-membership-report)
+- [Task 4 - Run Administrator Roles Membership Report​](#task-4---run-administrator-roles-membership-report)
+- [Task 5 - Run Oracle User Report](#task-5---run-oracle-user-report)
+
+
+## Objectives
+
+After completing thi lab you will learn to run and generate various reports from the OCIM portal. 
 
 ## Task 1 - Run User Summary report ​
 
@@ -30,16 +41,16 @@
 
 ## Task 2 - Run Group Summary report ​
 
-7. Generate a Group Summary report following the same steps as above.
+1. Generate a Group Summary report following the same steps as above.
 
 ## Task 3 - Run Group Membership Report​
 
-8. Generate a Group Membership report following the same steps as above.
+1. Generate a Group Membership report following the same steps as above.
 
 ## Task 4 - Run Administrator Roles Membership Report​
 
-9. Generate a Administrator Roles Membership report following the same steps as above.
+1. Generate a Administrator Roles Membership report following the same steps as above.
 
 ## Task 5 - Run Oracle User Report
 
-10. Generate a Oracle User report following the same steps as above.
+1. Generate a Oracle User report following the same steps as above.

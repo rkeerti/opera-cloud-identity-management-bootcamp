@@ -1,5 +1,28 @@
-# 1. OCIM Portal End User Journey
+# OPERA Cloud Identity Management Portal User Management <!-- omit from toc -->
 
+- [Objectives](#objectives)
+- [OCIM Portal End User Journey](#ocim-portal-end-user-journey)
+  - [Login as Non-Federated User](#login-as-non-federated-user)
+- [OCIM Portal Administrator Journey – User Management](#ocim-portal-administrator-journey--user-management)
+  - [Task 1 - Create User](#task-1---create-user)
+  - [Task 2 - Search for a user](#task-2---search-for-a-user)
+  - [Task 3 - Update a User Profile](#task-3---update-a-user-profile)
+  - [Task 4 - Assign ALLTASKS  or any non-admin group membership](#task-4---assign-alltasks--or-any-non-admin-group-membership)
+  - [Task 5 - Transfer the user to another property](#task-5---transfer-the-user-to-another-property)
+  - [Task 6 - Assign user to IAMADMIN​ Administrator role](#task-6---assign-user-to-iamadmin-administrator-role)
+  - [Task 7 - Deactivate User](#task-7---deactivate-user)
+  - [Task 8 - Delete User](#task-8---delete-user)
+  - [Task 9 - Approve Oracle User’s data access request​](#task-9---approve-oracle-users-data-access-request)
+
+# Objectives
+
+After completing this lab you will learn,
+* To access OCIM portal as a non-federated end user and manage your user profile.
+* To access OCIM portal as an Administrator and perform user management tasks including creating, searching for, updating, deactivating and deleting a user profile.
+* You will also learn to assign group memberships, admin roles and also transfer users to another location as an Administrator.
+
+
+# OCIM Portal End User Journey
 
 ## Login as Non-Federated User
 
@@ -44,7 +67,7 @@ An email notification is sent to the email associated with that user account as 
 11. Click Password Reset to set a new password for your user account.
 
 
-# 2. OCIM Portal Administrator Journey – User Management
+# OCIM Portal Administrator Journey – User Management
 
 ## Task 1 - Create User
 

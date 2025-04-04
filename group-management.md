@@ -1,5 +1,17 @@
-# OCIM Portal Administrator Journey – Group Management 
+# OCIM Portal Administrator Journey – Group Management <!-- omit from toc -->
 
+- [Objectives](#objectives)
+- [Task 1 - Create a Custom Group](#task-1---create-a-custom-group)
+- [Task 2 - Assign User to Custom Group](#task-2---assign-user-to-custom-group)
+- [Task 3 - Revoke group membership​](#task-3---revoke-group-membership)
+- [Task 4 - Copy Custom Groups](#task-4---copy-custom-groups)
+- [Task 5 - Delete a Custom Group](#task-5---delete-a-custom-group)
+
+## Objectives
+
+* The objective of this lab is to understand group management in OCIM portal. 
+* You will learn how to create a custom group, assign users to groups, revoke membership and delete a custom group.
+* You will also learn how to copy groups from one location to another.
 
 ## Task 1 - Create a Custom Group
 

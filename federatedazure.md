@@ -1,4 +1,25 @@
-# OPERA Cloud Identity Management Federation with Microsoft Entra ID
+# OPERA Cloud Identity Management Federation with Microsoft Entra ID <!-- omit from toc -->
+
+- [Prerequisites for Microsoft Entra ID Integration with OCIM](#prerequisites-for-microsoft-entra-id-integration-with-ocim)
+- [Objectives](#objectives)
+- [Task 1 : Create a confidential application in OCI IAM Identity Domain​](#task-1--create-a-confidential-application-in-oci-iam-identity-domain)
+  - [Find the Domain URL and Generate a Secret Token](#find-the-domain-url-and-generate-a-secret-token)
+- [Task 2 : Configure the OCI IAM Application in the Identity Provider (Microsoft Entra ID)​](#task-2--configure-the-oci-iam-application-in-the-identity-provider-microsoft-entra-id)
+- [Task 3 : Configure Provisioning and User Attribute Mappings in the Identity Provider (Entra ID)](#task-3--configure-provisioning-and-user-attribute-mappings-in-the-identity-provider-entra-id)
+  - [Custom Attribute Mapping](#custom-attribute-mapping)
+  - [Group Attribute Mapping](#group-attribute-mapping)
+- [Task 4 : Test User and Group Provisioning into OCI IAM](#task-4--test-user-and-group-provisioning-into-oci-iam)
+- [Task 5 : Configure Single Sign On (SAML) settings ​in the Identity Provider (Microsoft Entra ID)](#task-5--configure-single-sign-on-saml-settings-in-the-identity-provider-microsoft-entra-id)
+  - [Download the SAML Metadata in OCI IAM Identity Domain](#download-the-saml-metadata-in-oci-iam-identity-domain)
+  - [Configure SSO for the Enterprise application in Entra ID](#configure-sso-for-the-enterprise-application-in-entra-id)
+  - [Configure User Attributes and Claims in Azure](#configure-user-attributes-and-claims-in-azure)
+  - [Download the Entra ID SAML Metadata Document](#download-the-entra-id-saml-metadata-document)
+  - [Assign User Groups to the Application](#assign-user-groups-to-the-application)
+- [Task 6 :  Configure Entra ID as an Identity Provider in OCI IAM Identity Domain](#task-6---configure-entra-id-as-an-identity-provider-in-oci-iam-identity-domain)
+- [Task 7 : Configure Identity Provider (IdP) Policy​](#task-7--configure-identity-provider-idp-policy)
+- [Task 8 : Configure Single Sign-on Policy​](#task-8--configure-single-sign-on-policy)
+- [Task 9 - Test Single Sign-on](#task-9---test-single-sign-on)
+
 
 ## Prerequisites for Microsoft Entra ID Integration with OCIM
 
@@ -6,6 +27,14 @@
 * A user account in Microsoft Entra ID with permission to configure provisioning (for example, Application Administrator, Cloud Application Administrator, Application Owner, or Global Administrator).
 * OPERA Cloud Identity Management’s OCI IAM Identity Domains provisioned for the customer.
 * User account in OCI IAM Identity Domain with Administrator permissions.
+
+## Objectives
+
+* The objective of this lab is to configure Entra ID as the Identity Provider for OPERA Cloud Identity Management.   
+
+* You will learn to setup synchronization of users, groups and their group memberships from Entra ID to OPERA Cloud Identity Management.    
+
+* You will also setup Single Sign-on to access OPERA Cloud with Entra ID credentials.
 
 ## Task 1 : Create a confidential application in OCI IAM Identity Domain​
 

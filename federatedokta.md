@@ -1,23 +1,27 @@
 # OPERA Cloud Identity Management Federation with Okta <!-- omit from toc -->
-- [1. Create a confidential application in OCI IAM Identity Domain​](#1-create-a-confidential-application-in-oci-iam-identity-domain)
-  - [1.1. Find the Domain URL and Generate a Secret Token](#11-find-the-domain-url-and-generate-a-secret-token)
-- [2. Configure the OCI IAM Application in the Identity Provider (Okta)​](#2-configure-the-oci-iam-application-in-the-identity-provider-okta)
-- [3. Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)](#3-configure-provisioning-and-user-attribute-mappings-in-the-identity-provider-okta)
-- [4. Test User and Group Provisioning into OCI IAM](#4-test-user-and-group-provisioning-into-oci-iam)
-- [5. Configuring Single Sign-on](#5-configuring-single-sign-on)
-  - [5.1. Download the SAML Metadata from OCI IAM Identity Domain](#51-download-the-saml-metadata-from-oci-iam-identity-domain)
-  - [5.2. Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)](#52-configure-single-sign-on-saml-settings-in-the-identity-provider-okta)
-- [6. Configure Okta as an Identity Provider in OCI IAM Identity Domain](#6-configure-okta-as-an-identity-provider-in-oci-iam-identity-domain)
-- [7. Configure Identity Provider (IdP) Policy​](#7-configure-identity-provider-idp-policy)
-- [8. Configure Single Sign-on Policy​](#8-configure-single-sign-on-policy)
-- [9. Test Single Sign-on](#9-test-single-sign-on)
 
-## Prerequisites for Okta Integration with OCIM <!-- omit from toc -->
+- [Prerequisites for Okta Integration with OCIM](#prerequisites-for-okta-integration-with-ocim)
+- [Objectives](#objectives)
+- [Task 1 : Create a confidential application in OCI IAM Identity Domain​](#task-1--create-a-confidential-application-in-oci-iam-identity-domain)
+  - [Find the Domain URL and Generate a Secret Token](#find-the-domain-url-and-generate-a-secret-token)
+- [Task 2: Configure the OCI IAM Application in the Identity Provider (Okta)​](#task-2-configure-the-oci-iam-application-in-the-identity-provider-okta)
+- [Task 3: Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)](#task-3-configure-provisioning-and-user-attribute-mappings-in-the-identity-provider-okta)
+- [Task 4: Test User and Group Provisioning into OCI IAM](#task-4-test-user-and-group-provisioning-into-oci-iam)
+- [Task 5: Configuring Single Sign-on](#task-5-configuring-single-sign-on)
+  - [Download the SAML Metadata from OCI IAM Identity Domain](#download-the-saml-metadata-from-oci-iam-identity-domain)
+  - [Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)](#configure-single-sign-on-saml-settings-in-the-identity-provider-okta)
+- [Task 6: Configure Okta as an Identity Provider in OCI IAM Identity Domain](#task-6-configure-okta-as-an-identity-provider-in-oci-iam-identity-domain)
+- [Task 7: Configure Identity Provider (IdP) Policy​](#task-7-configure-identity-provider-idp-policy)
+- [Task 8: Configure Single Sign-on Policy​](#task-8-configure-single-sign-on-policy)
+- [Task 9: Test Single Sign-on](#task-9-test-single-sign-on)
+
+
+## Prerequisites for Okta Integration with OCIM
 
 * An Okta account with administrator privileges.
 * User account in OCI IAM Identity Domain with Administrator role.
   
-## Objectives <!-- omit from toc -->
+## Objectives
 
 * The objective of this lab is to configure Okta as the Identity Provider for OPERA Cloud Identity Management.   
 
@@ -25,7 +29,7 @@
 
 * You will also setup Single Sign-on to access OPERA Cloud with Okta credentials.
 
-## 1. Create a confidential application in OCI IAM Identity Domain​
+## Task 1 : Create a confidential application in OCI IAM Identity Domain​
 
 1. Open a supported browser and enter the following Console URL: 
 
@@ -67,7 +71,7 @@
 
 12. On the application details page, click Activate and confirm that you want to activate the new application.
 
-### 1.1. Find the Domain URL and Generate a Secret Token
+### Find the Domain URL and Generate a Secret Token
 
 13. Return to the identity domain overview by clicking the identity domain name in the breadcrumbs. Click Copy next to the Domain URL in Domain information and save the URL to an app where you can edit it. The OCI IAM GUID is the **IdentityDomainID** part of the domain URL:
 
@@ -116,7 +120,7 @@ In an Apple MacOS, use the following:
     
 * Make a note of the secret token value.
 
-## 2. Configure the OCI IAM Application in the Identity Provider (Okta)​
+## Task 2: Configure the OCI IAM Application in the Identity Provider (Okta)​
 
 1. Sign in to your Okta account.
 
@@ -141,7 +145,7 @@ In an Apple MacOS, use the following:
 5. Under General settings, enter a name for the application, for example **OCI-App**, and click **Done**.
 
 
-## 3. Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)
+## Task 3: Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)
 
 1. In the newly created application page, click the **Sign On** tab.
 In Settings, click **Edit**.
@@ -236,7 +240,7 @@ Note: Use single quotes ('') for string values, for example primary work locatio
     <img src= "images/okta18.png" alt="Okta" style="border: 1px solid black;">
 
 
-## 4. Test User and Group Provisioning into OCI IAM 
+## Task 4: Test User and Group Provisioning into OCI IAM 
 
 1. In the newly created application, click the Assignments tab.
 2. Click Assign and select Assign to People.
@@ -271,9 +275,9 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
     <img src= "images/okta22.png" alt="Okta" style="border: 1px solid black;">
 
-## 5. Configuring Single Sign-on
+## Task 5: Configuring Single Sign-on
 
-### 5.1. Download the SAML Metadata from OCI IAM Identity Domain
+### Download the SAML Metadata from OCI IAM Identity Domain
 
 1. Open a supported browser and enter the following Oracle Cloud Infrastructure (OCI) Console URL: https://cloud.oracle.com and sign in to the OCI console
 
@@ -293,26 +297,25 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
 7. Return to the identity domain overview by clicking the identity domain name in the breadcrumb navigation trail. Click Copy next to the Domain URL in Domain information and save the URL. This is the OCI IAM domain URL that you will use later.
 
-### 5.2. Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
+### Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
 
-8. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning.
-Note: You can also create a new application for SSO optionally.
+8. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning
 
-2. In the application details page of the application, click the **Sign On** tab
+9. In the application details page of the application, click the **Sign On** tab
 
-3. Click on **More Details** and make note of the following:
+10. Click on **More Details** and make note of the following:
 
     * Sign on URL
     * Issuer
 
     <img src= "images/sso5.png" alt="SSO" style="border: 1px solid black;">
 
-4. Click on Download next to the Signing Certificate and save as '.pem' file
+11. Click on Download next to the Signing Certificate and save as '.pem' file
 
     <img src= "images/sso6.png" alt="SSO" style="border: 1px solid black;">
 
 
-## 6. Configure Okta as an Identity Provider in OCI IAM Identity Domain
+## Task 6: Configure Okta as an Identity Provider in OCI IAM Identity Domain
 
 1. In the OCI Console in the domain you are working in, click Security and then click Identity providers.
 
@@ -339,7 +342,7 @@ Note: You can also create a new application for SSO optionally.
 9. Click Service Provider metadata.
 10. Click Download next to Service Provider signing certificate to download the SP signing certificate and save it.
 
-## 7. Configure Identity Provider (IdP) Policy​
+## Task 7: Configure Identity Provider (IdP) Policy​
 
 1. In the OCI Console in the domain you are working in, click Security and then click IdP policies.
 
@@ -351,7 +354,7 @@ Note: You can also create a new application for SSO optionally.
 
     <img src= "images/sso13.png" alt="SSO" style="border: 1px solid black;">
 
-## 8. Configure Single Sign-on Policy​
+## Task 8: Configure Single Sign-on Policy​
 
 1. Add IdP to Sign-on policy in IAM Domain:
     * Navigate to Sign-on policies under Security.
@@ -367,7 +370,7 @@ Note: You can also create a new application for SSO optionally.
 
     
 
-## 9. Test Single Sign-on
+## Task 9: Test Single Sign-on
 
 1. Enter the OPERA Cloud Console URL which follows the following format:
     ```

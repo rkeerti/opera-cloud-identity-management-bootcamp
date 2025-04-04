@@ -1,4 +1,13 @@
-# OPERA Cloud Identity Management MFA Lab​
+# OPERA Cloud Identity Management MFA Lab​ <!-- omit from toc -->
+
+- [Objectives](#objectives)
+- [Task 1 - Create an OCI IAM group](#task-1---create-an-oci-iam-group)
+- [Task 2 - Configure MFA and Sign-on Policy](#task-2---configure-mfa-and-sign-on-policy)
+- [Task 3 - Test MFA](#task-3---test-mfa)
+
+## Objectives
+
+The objective of this lab is to understand how to setup Multi-factor Authentication for OPERA Cloud services login.
 
 ## Task 1 - Create an OCI IAM group
 
@@ -88,4 +97,4 @@ Here, select **Mobile App Passcode** and **Mobile App notification**.
 
 ## Task 3 - Test MFA
 
-1. Test MFA with the user who is part of the newly created group (the group added in the sign-on rule).
+1. Login to OPERA Cloud and test MFA with the user who is part of the newly created group (the group added in the sign-on rule).

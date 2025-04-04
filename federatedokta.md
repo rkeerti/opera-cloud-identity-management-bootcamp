@@ -7,9 +7,7 @@
 - [Task 2: Configure the OCI IAM Application in the Identity Provider (Okta)​](#task-2-configure-the-oci-iam-application-in-the-identity-provider-okta)
 - [Task 3: Configure Provisioning and User Attribute Mappings in the Identity Provider (Okta)](#task-3-configure-provisioning-and-user-attribute-mappings-in-the-identity-provider-okta)
 - [Task 4: Test User and Group Provisioning into OCI IAM](#task-4-test-user-and-group-provisioning-into-oci-iam)
-- [Task 5: Configuring Single Sign-on](#task-5-configuring-single-sign-on)
-  - [Download the SAML Metadata from OCI IAM Identity Domain](#download-the-saml-metadata-from-oci-iam-identity-domain)
-  - [Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)](#configure-single-sign-on-saml-settings-in-the-identity-provider-okta)
+- [Task 5: Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)](#task-5-configure-single-sign-on-saml-settings-in-the-identity-provider-okta)
 - [Task 6: Configure Okta as an Identity Provider in OCI IAM Identity Domain](#task-6-configure-okta-as-an-identity-provider-in-oci-iam-identity-domain)
 - [Task 7: Configure Identity Provider (IdP) Policy​](#task-7-configure-identity-provider-idp-policy)
 - [Task 8: Configure Single Sign-on Policy​](#task-8-configure-single-sign-on-policy)
@@ -51,23 +49,29 @@
 
     ![Add Application](images/add_application.png)
 
-7. Enter a name for the confidential application, for example, “OktaSync” Click Next.
+7. Enter a name for the confidential application. The confidential application name must follow the below format, where < CompanyName > is replaced by your company name:
 
-8. Under Client configuration, select Configure this application as a client now. Under Authorization, select Client credentials
+    ```
+    <CompanyName>_OKTA
+    ```
+
+8. Click Next.
+
+9.  Under Client configuration, select Configure this application as a client now. Under Authorization, select Client credentials
 
      <img src= "images/add-app2.png" alt="Add Application 2" style="border: 1px solid black;">
 
-9. Scroll to the bottom and click Add app roles.
+10. Scroll to the bottom and click Add app roles.
 
-10. Under **App roles** click **Add roles**, and in the Add app roles page, select **User Administrator** and click **Add**.
+11. Under **App roles** click **Add roles**, and in the Add app roles page, select **User Administrator** and click **Add**.
 
     <img src= "images/app-role.png" alt="Add Application 3" style="border: 1px solid black;">
 
     ![Add Application 4](images/add_app_roles.png)
 
-11. Click Next and then click Finish.
+12. Click Next and then click Finish.
 
-12. On the application details page, click Activate and confirm that you want to activate the new application.
+13. On the application details page, click Activate and confirm that you want to activate the new application.
 
 ### Find the Domain URL and Generate a Secret Token
 
@@ -91,11 +95,7 @@
 
     ![Domain3](images/domain3.png)
     
-18. The secret token is the base64 encoding of clientID:clientsecret or
-
-    ```
-    base64(<clientID>:<clientsecret>)
-    ```
+18. The secret token is the base64 encoding of clientID:clientsecret
 
 The following examples show how to generate the secret token on Microsoft Windows and Apple MacOS.
 
@@ -106,7 +106,7 @@ In a Microsoft Windows environment:
     ```
     [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('client_id:secret'))
     ```
-* Make a note of the secret token value.
+* **Make a note of the secret token value.**
 
 In an Apple MacOS, use the following:
 
@@ -116,7 +116,7 @@ In an Apple MacOS, use the following:
     echo -n <clientID>:<clientsecret> | base64
     ```
     
-* Make a note of the secret token value.
+* **Make a note of the secret token value.**
 
 ## Task 2: Configure the OCI IAM Application in the Identity Provider (Okta)​
 
@@ -187,8 +187,10 @@ If you get an error message, check the values that you have entered and try agai
 10. Click on **Add Attribute** 
     <img src= "images/okta12.png" alt="Okta" style="border: 1px solid black;">
 
-    
-    To Add an attribute, Refer to the User Mapping table and enter the following details:
+        
+11. Refer to the User Mapping table shown below and **ensure all of the mandatory attributes are added**. Some attributes may have already been created by default, you do not have to add them.
+
+    To Add an attribute, and enter the following details:
 
     * Data type : Refer to value from the **Mapping Type** column from the User Mapping Table
     * Display name : Refer to the value from the **IAM Domain (IDCS) User Attribute** column from the User Mapping Table
@@ -196,11 +198,6 @@ If you get an error message, check the values that you have entered and try agai
     * External name : Automatically populated by the value of the variable name.
     * External namespace : Refer to the value from the **External Namespace** column from the User Mapping Table. If there is no value in the column, leave it blank.
     * Attribute type : Select **Personal**
-
-    
-    The User Mapping table to map user attributes between OCI IAM and Okta is shown below. Ensure all of the mandatory attributes. Some attributes may have already been created by default, you do not have to add them.
-
-    
 
     | Okta Attribute      | IAM Domain (IDCS) User Attribute | External Namespace | Mapping Type | Attribute Value | Description | Mandatory Attribute |
     | ----------- | ----------- |-------|------|------|------|--------|
@@ -212,28 +209,37 @@ If you get an error message, check the values that you have entered and try agai
     | isFederatedUser| isFederatedUser | urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User| boolean | true | Enable Federated User flag in Identity Domain.| Yes|
     |bypassNotification|bypassNotification|urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User| boolean | true | The bypass notification flag controls whether an email notification is sent after creating or updating a user account in Identity Domain. The bypassNotification must be set to "true" for Federated users. This disables user account activation notification in IAM Identity Domain for the user. | Yes | 
 
-    See the following example to add the 'OC_PrimaryWorkLocation' attribute:
+    See the following example below to add the 'OC_PrimaryWorkLocation' attribute:
 
     <img src= "images/okta13.png" alt="Okta" style="border: 1px solid black;">
 
-11. Once all the mandatory attributes have been created, click **Mapping**. Click on the tab **Okta User to OCI App**
+12. Once all the mandatory attributes have been created, click **Mapping**. Click on the tab **Okta User to OCI App**
 
     <img src= "images/okta14.png" alt="Okta" style="border: 1px solid black;">
 
     <img src= "images/okta15.png" alt="Okta" style="border: 1px solid black;">
 
-12. Refer to the the **User Mapping** table again and enter the values from the **Attribute Value** column. 
-Note: Use single quotes ('') for string values, for example primary work location. Save the mappings.
+13. Refer to the the table below and enter the values from the **Attribute Value** column. 
+**Note: Use single quotes ('') for primary work location.**
+
+    | Okta Attribute      | IAM Domain (IDCS) User Attribute| Attribute Value | Description | 
+    | ----------- | ----------- |-------|------|
+    |extensionAttributePrimaryWorkLocation| OC_PrimaryWorkLocation | Same value for all Users. Refer description | Mandatory Single Valued User Attribute. Indicates the User primary work location. Primary Work Location can have values <CHAINCODE>:C for multi chain customers derived from the User profile. For customers having only a single chain, the source value can be set to constant <CHAINCODE>:C for all users. |
+    | isFederatedUser| isFederatedUser | true | Enable Federated User flag in Identity Domain.|
+    |bypassNotification|bypassNotification| true | The bypass notification flag controls whether an email notification is sent after creating or updating a user account in Identity Domain. The bypassNotification must be set to "true" for Federated users. This disables user account activation notification in IAM Identity Domain for the user. |
+
 
      <img src= "images/okta16.png" alt="Okta" style="border: 1px solid black;">
 
-13. Syncing Groups from Okta to Oracle Identity Domain can be done manually or can be automated by selecting the **Push Group** tab under the OCI IAM application to define a rule.
+14. Save the mappings
+
+15. Syncing Groups from Okta to Oracle Identity Domain can be automated by selecting the **Push Group** tab under the OCI IAM application to define a rule.
 
     Select the Push Group tab and click on **Push Group**
 
     <img src= "images/okta17.png" alt="Okta" style="border: 1px solid black;">
 
-14. Click on **Find groups by name** and Enter the group name to push from Okta to OCI IAM Domain. Then click **Save**
+16. Click on **Find groups by name** and Enter the group name to push from Okta to OCI IAM Domain. Then click **Save**
 
     <img src= "images/okta18.png" alt="Okta" style="border: 1px solid black;">
 
@@ -261,7 +267,7 @@ Note: Use single quotes ('') for string values, for example primary work locatio
 
 8. Click Done.
 
-9. Open a supported browser and enter the following Oracle Cloud Infrastructure (OCI) Console URL: https://cloud.oracle.com and sign in to the OCI console
+9. Open a browser window and enter the following Oracle Cloud Infrastructure (OCI) Console URL: https://cloud.oracle.com and sign in to the OCI console
 
 10. Open the navigation menu and click **Identity & Security**. Under Identity, click **Domains**
 
@@ -273,42 +279,20 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
     <img src= "images/okta22.png" alt="Okta" style="border: 1px solid black;">
 
-## Task 5: Configuring Single Sign-on
+## Task 5: Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
 
-### Download the SAML Metadata from OCI IAM Identity Domain
+1. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning
 
-1. Open a supported browser and enter the following Oracle Cloud Infrastructure (OCI) Console URL: https://cloud.oracle.com and sign in to the OCI console
+2. In the application details page of the application, click the **Sign On** tab
 
-2. Open the navigation menu and click **Identity & Security**. Under Identity, click **Domains**
-
-3. Select the identity domain in which Okta has been configured. 
-
-4. Next, click Security and then click Identity providers.
-
-5. Click **Export SAML metadata**
-
-    <img src= "images/sso1.png" alt="SSO" style="border: 1px solid black;">
-
-6. Select the Metadata file option and click **Download XML**
-
-    <img src= "images/sso2.png" alt="SSO" style="border: 1px solid black;">
-
-7. Return to the identity domain overview by clicking the identity domain name in the breadcrumb navigation trail. Click Copy next to the Domain URL in Domain information and save the URL. This is the OCI IAM domain URL that you will use later.
-
-### Configure Single Sign On (SAML) settings ​in the Identity Provider (Okta)
-
-8. In the Okta admin console, Click on Applications under the navigation menu and go to the application that was previously created for provisioning
-
-9. In the application details page of the application, click the **Sign On** tab
-
-10. Click on **More Details** and make note of the following:
+3.  Click on **More Details** and make note of the following:
 
     * Sign on URL
     * Issuer
 
     <img src= "images/sso5.png" alt="SSO" style="border: 1px solid black;">
 
-11. Click on Download next to the Signing Certificate and save as '.pem' file
+4.  Click on Download next to the Signing Certificate and save as '.pem' file
 
     <img src= "images/sso6.png" alt="SSO" style="border: 1px solid black;">
 
@@ -319,11 +303,16 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
 2. Click Add IdP and then click Add SAML IdP.
 
-3. Enter a name for the SAML IdP, for example, Okta. Click Next.
+3. Enter a name for the SAML IdP. The SAML IdP name must follow the below format, where < CompanyName > is replaced by your company name:
 
-4. On the Exchange metadata page, ensure that **Enter IdP metadata** is selected.
+    ```
+    <CompanyName>_OKTA
+    ```
+4. Click Next.
 
-5. Enter the following details that was noted in the previous steps
+5. On the Exchange metadata page, ensure that **Enter IdP metadata** is selected.
+
+6. Enter the following details that was noted in the previous steps
     * For Identity provider issuer URI: Enter the Issuer URL.
     * For SSO service URL: Enter the SingleSignOnService URL.
     * For SSO service binding: Select POST.
@@ -331,14 +320,12 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
     <img src= "images/sso7.png" alt="SSO" style="border: 1px solid black;">
 
-6. On the Map attributes page:
+7. On the Map attributes page:
     * For Requested NameId format, choose None.
     * For Identity provider user attribute: Choose SAML assertion Name ID.
     * For Identity Domain user attribute: Choose UserName.
-7. Click Next. Review and click Create IDP.
-8. On the What's Next page, click Activate
-9. Click Service Provider metadata.
-10. Click Download next to Service Provider signing certificate to download the SP signing certificate and save it.
+8. Click Next. Review and click Create IDP.
+9. On the What's Next page, click Activate
 
 ## Task 7: Configure Identity Provider (IdP) Policy​
 
@@ -348,7 +335,9 @@ The group which was assigned to the OCI IAM application in Okta is now present i
 
     <img src= "images/sso12.png" alt="SSO" style="border: 1px solid black;">
 
-3. Under Assigned Identity Providers, add the IdP that was created for Okta and Save your changes.
+3. Under Assigned Identity Providers, add the IdP that was created for Okta (< CompanyName >_OKTA) and Save your changes.
+   
+   > **Note:** DO NOT remove the "Username-Password" policy and any other existing Identity Providers. 
 
     <img src= "images/sso13.png" alt="SSO" style="border: 1px solid black;">
 
@@ -361,7 +350,8 @@ The group which was assigned to the OCI IAM application in Okta is now present i
         <img src= "images/sso15.png" alt="SSO" style="border: 1px solid black;">
 
     * Under **Authenticating identity provider**, add the **Okta Identity Provider**. 
-    **Note**: Do not remove any already existing Authenticating identity providers.
+
+        > **Note:** DO NOT remove the "Username-Password" policy and any other existing Authenticating identity providers.
 
         <img src= "images/sso14.png" alt="SSO" style="border: 1px solid black;">
 
@@ -374,7 +364,7 @@ The group which was assigned to the OCI IAM application in Okta is now present i
     ```
     https://<hostname>/<enterprise Id>/operacloud
     ```
-2. You should see an option to sign in via **Okta IdP**. Click on the Okta IdP to sign-on
+2. You should see an option to sign in using **< CompanyName >_OKTA**. Click on the Okta IdP that you created to sign-in.
 
 3. Sign in with the Okta credentials for the test user created during our setup
 

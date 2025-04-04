@@ -24,9 +24,7 @@
 ## Objectives
 
 * The objective of this lab is to configure Okta as the Identity Provider for OPERA Cloud Identity Management.   
-
 * You will learn to setup synchronization of users, groups and their group memberships from Okta to OPERA Cloud Identity Management.    
-
 * You will also setup Single Sign-on to access OPERA Cloud with Okta credentials.
 
 ## Task 1 : Create a confidential application in OCI IAM Identity Domain​

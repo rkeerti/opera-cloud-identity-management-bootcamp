@@ -83,19 +83,17 @@
 
     ![Domain1](images/domain1.png)
 
-14. In the confidential app in OCI IAM, click the OAuth configuration under Resources.
+14. Go to the confidential application created in OCI IAM, Scroll down and find the Client ID and Client secret under General Information.
 
-15. Scroll down and find the Client ID and Client secret under General Information.
-
-16. Copy the client ID and store it.
+15. Copy the client ID and store it.
 
     <img src= "images/domain2.png" alt="Domain2" style="border: 1px solid black;">
 
-17. Click Show secret and copy the secret and store it.
+16. Click Show secret and copy the secret and store it.
 
     ![Domain3](images/domain3.png)
     
-18. The secret token is the base64 encoding of clientID:clientsecret
+17. The secret token is the base64 encoding of clientID:clientsecret
 
 The following examples show how to generate the secret token on Microsoft Windows and Apple MacOS.
 
